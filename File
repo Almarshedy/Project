@@ -1,0 +1,62 @@
+package project;
+
+import java.util.*;
+import java.io.*;
+
+/**
+ *
+ * @author Nasser
+ */
+public class FILES {
+
+    public static void main(String[] args) throws FileNotFoundException {
+        
+        Scanner fromFile = new Scanner(new File("txt file path"));
+               ArrayList<String> arr = new ArrayList();
+       while(fromFile.hasNext())
+       {
+       arr.add(fromFile.next());
+       }
+       System.out.println("the total amount of words is: "+arr.size());
+       
+   HashSet<String> un = new HashSet<>(arr);
+   HashSet<String> unique = new HashSet<>();
+ 
+   for(String s : un)
+   {
+   if(Collections.frequency(un, s)==1)
+    unique.add(s);
+   }
+       System.out.println();
+   
+   System.out.println(" the number of unique words is:  "+unique.size());
+   HashMap <String,Integer> count = new HashMap<>();
+   System.out.println();
+ 
+       for(String word: unique)
+   {
+     count.put(word, 0);
+   }
+       
+       for(String w: arr)
+       {
+       count.put(w, count.get(w)+1);
+       }
+               
+   System.out.println("repeated words with their count of repetition : "+count);
+               
+   LinkedHashMap <String,Integer> values = new LinkedHashMap<>(count);
+   int c=0;
+   for(String m :unique)
+   {
+       m.equals(values);
+       System.out.println("top 10 repeted words are"+m);
+       c+=1;
+                 
+       if(c>9)
+       {
+       break;
+       }
+       }
+    }
+}
